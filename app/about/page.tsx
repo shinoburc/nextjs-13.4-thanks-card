@@ -1,21 +1,34 @@
-'use client';
 
+import { prisma } from '@/app/_utils/prismaSingleton';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import ComponentTest from './compoent-test';
+import { useState } from 'react';
+import { User } from '@prisma/client';
 
-export default function About() {
-  const router = useRouter();
+
+export default async function About() {
+  const users = await prisma.user.findMany({
+    include: {
+      role: true,
+      department: true,
+    },
+  });
 
   return (
-    <>
+    <div>
       <div>This is About Component.</div>
       <ComponentTest />
       <Link href='/'>Home</Link>
-      <button type='button' onClick={() => router.push('/')}>
-        Home(useRouter)
-      </button>
-    </>
+      {users?.map((user) => {
+        return (
+          <ul key={user.id}>
+            <li>{user.name}</li>
+            <li>{user.email}</li>
+          </ul>
+        )
+      })}
+
+    </div>
   );
 }

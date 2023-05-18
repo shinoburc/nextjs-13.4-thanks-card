@@ -119,7 +119,6 @@ export default function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <SessionProvider>
       <ThemeProvider theme={mdTheme}>
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
@@ -144,7 +143,9 @@ export default function Layout({ children }: LayoutProps) {
               <Typography component='h1' variant='h6' color='inherit' noWrap sx={{ flexGrow: 1 }}>
                 ThanksCard
               </Typography>
-              <AccountInfo />
+              <SessionProvider>
+                <AccountInfo />
+              </SessionProvider>
               <IconButton color='inherit'>
                 <Badge badgeContent={4} color='secondary'>
                   <NotificationsIcon />
@@ -226,6 +227,5 @@ export default function Layout({ children }: LayoutProps) {
           </Box>
         </Box>
       </ThemeProvider>
-    </SessionProvider>
   );
 }

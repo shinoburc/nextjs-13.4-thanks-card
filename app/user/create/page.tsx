@@ -41,6 +41,7 @@ const UserCreate: NextPage = () => {
     });
     if (response.ok) {
       const responseJSON = await response.json();
+      router.refresh();
       router.push('/user/');
     } else {
       // TODO: display error message
