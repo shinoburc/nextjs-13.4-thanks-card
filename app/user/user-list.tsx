@@ -2,19 +2,18 @@
 
 import Link from "next/link";
 
-import Button from "@mui/material/Button";
-
 /* ライブラリ Material-UI が提供するコンポーネントの import */
+import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-
 /* icons */
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 import { Prisma } from "@prisma/client";
+
 type User = Prisma.UserGetPayload<{
     include: {
       role: true;

@@ -1,5 +1,3 @@
-
-
 import * as UserRepository from '@/app/_repositories/User';
 import UserListComponent from "./user-list";
 
